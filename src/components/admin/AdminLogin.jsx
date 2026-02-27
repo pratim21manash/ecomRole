@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const AdminLogin = () => {
    const [user, setUser] = useState({
       email: '',
-      Password: ''
+      password: ''
    })
 
    const hanndleChange = (e) => {
@@ -15,6 +15,11 @@ const AdminLogin = () => {
         ...user,
         [key]: value,
       })
+   }
+
+   const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(user)
    }
 
    return (
@@ -29,7 +34,7 @@ const AdminLogin = () => {
 
                 <h1 className='text-2xl font-semibold text-gray-600'>Admin Panel</h1>
 
-                <form className='flex flex-col gap-4'>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                     <div className='flex flex-col gap-1'>
                         <label className='text-zinc-800 font-medium'>Email</label>
                         <input 
@@ -60,9 +65,6 @@ const AdminLogin = () => {
                     <Link to="#" className='text-[#27BE8C] font-medium hover:underline'>Forgot password ?</Link>
                     <Link to="#" className='text-[#27BE8C] font-medium hover:underline'>Create an account</Link>
                 </div>
-
-                <h1>{user.email}</h1>
-                 <h1>{user.Password}</h1>
             </div>
         </div>
     </div>
